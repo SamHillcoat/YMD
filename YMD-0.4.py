@@ -20,6 +20,7 @@ class Main(tk.Frame):
         thread_1.start()
         
     def gui(self):
+		#Input Box
         self.input_frame = tk.LabelFrame(self, text="import", padx=7, pady=6, width=200,height=200)
         self.input_frame.grid(row=0,column=0,padx=(5,4), pady=(0,5))
 
@@ -31,10 +32,10 @@ class Main(tk.Frame):
 
         self.enter_input = ScrolledText(self.input_frame, width=48, height=6)
         self.enter_input.grid(row=1, column=0, columnspan=2, sticky='W')
-
+		#Help
         self.side_frame = tk.LabelFrame(self, text="Help", padx=2, pady=4, width=50, height=300)
         self.side_frame.grid(row=0, column=1, rowspan=6,padx=(0,5), pady=(0,5), sticky='NW')
-
+	
         self.side_label_1 = tk.Label(self.side_frame, text="Choose a .txt file from a local drive \n or enter it instead. \n \n The input must be formated like the \n example shows "+"("+"caps sensitive."+")")
         self.side_label_1.grid(row=0,column=0, sticky='W')  
         self.side_label_2 = tk.Label(self.side_frame, text="e.g. Artist - Song")
@@ -46,7 +47,8 @@ class Main(tk.Frame):
         self.side_label_5 = tk.Label(self.side_frame, text="Check 'sort into folders' to output \n songs into artist named sub-folders \n in a folder named music.")
         self.side_label_5.grid(row=4)
     
-                                     
+       
+        #Output Box                           
         self.output_frame = tk.LabelFrame(self, text="output", padx=7, pady=6,width=200,height=200)
         self.output_frame.grid(row=2, column=0, padx=(5,4), pady=(9,5), sticky='W')
     
@@ -214,7 +216,7 @@ class Main(tk.Frame):
                 initial_file,
                 "--sout=#transcode{acodec=mpga,ab=192}:standard{access=file,dst=" + loc_name]
             print (convert_command)
-            
+            #Check if file exists; if True; Convert
             counter_exists = True
             while counter_exists == True:
                 if os.path.exists(loc_name):
@@ -222,7 +224,6 @@ class Main(tk.Frame):
                     counter_exists = False
                 else:
                     pass
-#This is a test
             counter_exists = True
             while counter_exists == True:
                 if os.path.exists(str(self.output) + "\\" + str(word) + ".mp3"):
