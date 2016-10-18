@@ -19,25 +19,8 @@ class Main(tk.Frame):
         thread_1.start()
         
     def gui(self):
-        self.menubar = tk.Menu(self)
-        self.menu_help = tk.Menu(self.menubar, tearoff=0)
-        self.menu_about = tk.Menu(self.menubar, tearoff=0)
-        
-        self.menubar.add_cascade(label="Help", menu=self.menu_help)
-        self.menu_help.add_command(label="Offline Help", command=self.offline_help)
-        self.menu_help.add_command(label="Online Help", command=self.online_help)
-        
-        self.menubar.add_cascade(label="About", menu=self.menu_about)
-        self.menu_about.add_command(label="Developer", command=self.developer)
-        self.menu_about.add_command(label="Project", command=self.project)
-        
-        try:
-            self.master.config(menu=self.menubar)
-        except AttributeError:
-            self.master.tk.call(master, "config", "-menu", self.menubar)
-         
         self.input_frame = tk.LabelFrame(self, text="import", padx=7, pady=6, width=200,height=200)
-        self.input_frame.grid(row=0,column=0,padx=(5,0), pady=(5,5))
+        self.input_frame.grid(row=0,column=0,padx=(5,4), pady=(0,5))
 
         self.file_input = tk.StringVar()
         self.dir_input = ttk.Entry(self.input_frame, width=54, textvariable=self.file_input)
@@ -48,8 +31,8 @@ class Main(tk.Frame):
         self.enter_input = ScrolledText(self.input_frame, width=48, height=6)
         self.enter_input.grid(row=1, column=0, columnspan=2, sticky='W')
 
-        self.side_frame = tk.LabelFrame(self, text="Help", padx=2, pady=6, width=50, height=300)
-        self.side_frame.grid(row=0, column=1, rowspan=6,padx=(0,5), pady=(5,5), sticky='NW')
+        self.side_frame = tk.LabelFrame(self, text="Help", padx=2, pady=4, width=50, height=300)
+        self.side_frame.grid(row=0, column=1, rowspan=6,padx=(0,5), pady=(0,5), sticky='NW')
 
         self.side_label_1 = tk.Label(self.side_frame, text="Choose a .txt file from a local drive \n or enter it instead. \n \n The input must be formated like the \n example shows "+"("+"caps sensitive."+")")
         self.side_label_1.grid(row=0,column=0, sticky='W')  
@@ -64,7 +47,7 @@ class Main(tk.Frame):
     
                                      
         self.output_frame = tk.LabelFrame(self, text="output", padx=7, pady=6,width=200,height=200)
-        self.output_frame.grid(row=2, column=0, padx=(5,5), pady=(5,5), sticky='W')
+        self.output_frame.grid(row=2, column=0, padx=(5,4), pady=(9,5), sticky='W')
     
         self.file_output = tk.StringVar()
         self.cwd = str(os.getcwd())
@@ -230,8 +213,7 @@ class Main(tk.Frame):
                 initial_file,
                 "sout=#transcode{acodec=mpga,ab=192}:standard{access=file,dst=", loc_name]
             print (convert_command)
-            
-            #needs work from here -->
+            #needs work from here
             time.sleep(15)
             convert = subprocess.Popen(["C:/Program Files (x86)/VideoLAN/VLC/vlc.exe",
                 "-I", "dummy", "-vvv",
@@ -240,7 +222,6 @@ class Main(tk.Frame):
             time.sleep(22)
             #to here
             os.remove(name)
-    
         self.progressbar.stop()
         self.progressbar.grid_remove()
 
