@@ -216,7 +216,7 @@ class Main(tk.Frame):
             print (convert_command)
             
             counter_exists = True
-            while counter_exists = True:
+            while counter_exists == True:
                 if os.path.exists(loc_name):
                     convert = subprocess.Popen(convert_command)
                     counter_exists = False
@@ -224,7 +224,7 @@ class Main(tk.Frame):
                     pass
 
             counter_exists = True
-            while counter_exists = True:
+            while counter_exists == True:
                 if os.path.exists(str(self.output) + "\\" + str(word) + ".mp3":
                     os.remove(name)
                 else:
