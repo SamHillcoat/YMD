@@ -218,13 +218,18 @@ class Main(tk.Frame):
             counter_exists = True
             while counter_exists = True:
                 if os.path.exists(loc_name):
-                    pass
-                else:
                     convert = subprocess.Popen(convert_command)
                     counter_exists = False
-                    
-            time.sleep(22)
-            os.remove(name)
+                else:
+                    pass
+
+            counter_exists = True
+            while counter_exists = True:
+                if os.path.exists(str(self.output) + "\\" + str(word) + ".mp3":
+                    os.remove(name)
+                else:
+                    pass
+
         self.progressbar.stop()
         self.progressbar.grid_remove()
 
