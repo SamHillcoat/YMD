@@ -214,7 +214,7 @@ class Main(tk.Frame):
                 initial_file,
                 "--sout=#transcode{acodec=mpga,ab=192}:standard{access=file,dst=" + loc_name]
             print (convert_command)
-            time.sleep(15)
+            time.sleep(22)
             convert = subprocess.Popen(convert_command)
             time.sleep(22)
             os.remove(name)
