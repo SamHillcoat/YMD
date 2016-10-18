@@ -1,0 +1,10 @@
+Features/Fixes needed
+
+Very important:
+    Exit subprocess when finished with it
+    
+Some what important:
+    Add ttk styling where possible  
+
+Not very important:
+    Add a horitzontal scroll to the ScrolledText entry box
