@@ -215,7 +215,7 @@ class Main(tk.Frame):
                 "--sout=#transcode{acodec=mpga,ab=192}:standard{access=file,dst=" + loc_name]
             print (convert_command)
             time.sleep(15)
-            convert = subprocess.Popen(convert_command, creationflags=CREATE_NO_WINDOW)
+            convert = subprocess.Popen(convert_command)
             time.sleep(22)
             os.remove(name)
         self.progressbar.stop()
