@@ -6,6 +6,7 @@ import subprocess
 import time
 import pafy
 import tkinter as tk
+from tkinter import filedialog
 from tkinter import ttk
 from tkinter.scrolledtext import ScrolledText
 import threading
@@ -87,12 +88,12 @@ class Main(tk.Frame):
 
     def input_dir_change(self):
         self.incorrect_input_1.config(text="")
-        self.text_input = tk.filedialog.askopenfilename(filetypes = [("Text file", "*.txt")], title='Select a text file')
+        self.text_input = filedialog.askopenfilename(filetypes = [("Text file", "*.txt")], title='Select a text file')
         self.file_input.set(self.text_input)
 
     def output_dir_change(self):
         self.incorrect_input_2.config(text="")
-        self.text_output = tk.filedialog.askdirectory()
+        self.text_output = filedialog.askdirectory()
         self.file_output.set(self.text_output)
         
     def check_checkbutton(self):
@@ -187,7 +188,7 @@ class Main(tk.Frame):
             name = word + ".opus"
             download_com = ["cmd.exe", "/k", 'youtube-dl', "-x", "-o", str(name), str(link)]
             print (download_com)
-            download = subprocess.Popen(download_com)
+            download = subprocess.Popen(download_com, creationflags=CREATE_NO_WINDOW)
             """name = word + ".opus"
             yt_command = ("youtube-dl -x "'-o "' + name + '" ' + str(link))
             os.system(yt_command)"""
@@ -211,16 +212,11 @@ class Main(tk.Frame):
             convert_command = ["C:/Program Files (x86)/VideoLAN/VLC/vlc.exe",
                 "-I", "dummy", "-vvv",
                 initial_file,
-                "sout=#transcode{acodec=mpga,ab=192}:standard{access=file,dst=", loc_name]
+                "--sout=#transcode{acodec=mpga,ab=192}:standard{access=file,dst=" + loc_name]
             print (convert_command)
-            #needs work from here
             time.sleep(15)
-            convert = subprocess.Popen(["C:/Program Files (x86)/VideoLAN/VLC/vlc.exe",
-                "-I", "dummy", "-vvv",
-                initial_file,
-                "--sout=#transcode{acodec=mpga,ab=192}:standard{access=file,dst=" + loc_name])
+            convert = subprocess.Popen(convert_command, creationflags=CREATE_NO_WINDOW)
             time.sleep(22)
-            #to here
             os.remove(name)
         self.progressbar.stop()
         self.progressbar.grid_remove()
@@ -236,7 +232,7 @@ def first_run():
 def run():
     root = tk.Tk()
     root.title("Main")
-    root.geometry("650x380")
+    root.geometry("648x380")
     root.resizable(width=False, height=False)
     app = Main(root)
     root.mainloop()
