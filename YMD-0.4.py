@@ -214,8 +214,15 @@ class Main(tk.Frame):
                 initial_file,
                 "--sout=#transcode{acodec=mpga,ab=192}:standard{access=file,dst=" + loc_name]
             print (convert_command)
-            time.sleep(22)
-            convert = subprocess.Popen(convert_command)
+            
+            counter_exists = True
+            while counter_exists = True:
+                if os.path.exists(loc_name):
+                    pass
+                else:
+                    convert = subprocess.Popen(convert_command)
+                    counter_exists = False
+                    
             time.sleep(22)
             os.remove(name)
         self.progressbar.stop()
