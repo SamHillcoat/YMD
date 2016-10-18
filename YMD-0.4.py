@@ -222,7 +222,7 @@ class Main(tk.Frame):
                     counter_exists = False
                 else:
                     pass
-
+#This is a test
             counter_exists = True
             while counter_exists == True:
                 if os.path.exists(str(self.output) + "\\" + str(word) + ".mp3"):
