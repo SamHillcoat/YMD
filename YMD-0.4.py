@@ -230,13 +230,17 @@ class Main(tk.Frame):
                 initial_file,
                 "sout=#transcode{acodec=mpga,ab=192}:standard{access=file,dst=", loc_name]
             print (convert_command)
+            
+            #needs work from here -->
             time.sleep(15)
             convert = subprocess.Popen(["C:/Program Files (x86)/VideoLAN/VLC/vlc.exe",
                 "-I", "dummy", "-vvv",
                 initial_file,
                 "--sout=#transcode{acodec=mpga,ab=192}:standard{access=file,dst=" + loc_name])
             time.sleep(22)
+            #to here
             os.remove(name)
+    
         self.progressbar.stop()
         self.progressbar.grid_remove()
 
